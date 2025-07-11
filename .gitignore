@@ -1,0 +1,14 @@
+# Ignore build output
+dist/
+
+# OS-specific files
+.DS_Store
+
+# Go build files
+*.exe
+*.out
+*.test
+
+# Editor folders
+.vscode/
+.idea/
