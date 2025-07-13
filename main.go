@@ -9,32 +9,31 @@ import (
 )
 
 func main() {
-	// Create dist folder if not exists
+	
 	err := os.MkdirAll("dist", os.ModePerm)
 	if err != nil {
 		log.Fatalf("Failed to create dist directory: %v", err)
 	}
 
-	// Parse HTML template
+	
 	tmpl, err := template.ParseFiles("templates/index.html")
 	if err != nil {
 		log.Fatalf("Failed to parse template: %v", err)
 	}
 
-	// Create output HTML file
 	outFile, err := os.Create("dist/index.html")
 	if err != nil {
 		log.Fatalf("Failed to create index.html: %v", err)
 	}
 	defer outFile.Close()
 
-	// Inject message into template
+	
 	err = tmpl.Execute(outFile, "Hello World :)")
 	if err != nil {
 		log.Fatalf("Failed to render template: %v", err)
 	}
 
-	// Copy static assets (CSS etc.)
+	
 	err = copyStaticFiles("static", "dist")
 	if err != nil {
 		log.Fatalf("Failed to copy static files: %v", err)
